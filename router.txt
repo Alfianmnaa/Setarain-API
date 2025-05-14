@@ -1,0 +1,38 @@
+plan router setarain
+
+{group}/route
+
+1. Auth
+auth/registrasi
+auth/login
+auth/refetch
+auth/logout
+
+2. User
+user/get/:id -> getone
+user/getall -> getall
+user/update/:id 
+user/delete/:id -> delete
+
+3. Donasi
+donasi/create -> create
+donasi/get/:id -> getone
+donasi/getall?kategori=makanan&jenis=snack -> getall
+donasi/update/:id -> update
+donasi/delete/:id -> delete
+
+4. Status
+status/create -> create
+status/get/:id -> getone
+// side features
+status/update/:id -> update
+status/delete/:id -> delete
+
+5. Artikel
+artikel/create -> create
+artikel/get/:id -> getone
+artikel/getall?kategori=makanan&jenis=snack -> getall
+artikel/update/:id -> update
+artikel/delete/:id -> delete
+
+
