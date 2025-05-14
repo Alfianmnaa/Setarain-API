@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 const corsOptions = {
-  origin: ["https://setarain.netlify.app/", "http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "http://localhost:4000"],
+  origin: ["https://setarain.netlify.app", "https://setarain.netlify.app/", "http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "http://localhost:4000"],
   credentials: true,
 };
 
