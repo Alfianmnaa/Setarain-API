@@ -96,3 +96,53 @@ exports.hapusDonasi = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+// simpan donasi
+// Simpan donasi (tambah user._id ke array disimpan)
+exports.simpanDonasi = async (req, res) => {
+  try {
+    const donasiId = req.params.id;
+    const userId = req.user._id;
+
+    const donasi = await DonasiSchema.findById(donasiId);
+    if (!donasi) return res.status(404).json("Donasi tidak ditemukan");
+
+    if (!donasi.disimpan.includes(userId)) {
+      donasi.disimpan.push(userId);
+      await donasi.save();
+    }
+
+    res.status(200).json({ message: "Donasi berhasil disimpan", donasi });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+// Batalkan simpan donasi (hapus user._id dari array disimpan)
+exports.unsaveDonasi = async (req, res) => {
+  try {
+    const donasiId = req.params.id;
+    const userId = req.user._id;
+
+    const donasi = await DonasiSchema.findById(donasiId);
+    if (!donasi) return res.status(404).json("Donasi tidak ditemukan");
+
+    donasi.disimpan = donasi.disimpan.filter((id) => id.toString() !== userId.toString());
+    await donasi.save();
+
+    res.status(200).json({ message: "Donasi dibatalkan dari simpanan", donasi });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+// Get donasi yang disimpan oleh user
+exports.getSavedDonasi = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const savedDonasi = await DonasiSchema.find({ disimpan: userId });
+    res.status(200).json(savedDonasi);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
