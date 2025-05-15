@@ -9,8 +9,7 @@ router.put("/update/:id", donasiController.updateDonasi);
 router.delete("/delete/:id", donasiController.hapusDonasi);
 
 // handle save
-router.post("/donasi/:id/simpan", donasiController.simpanDonasi);
-router.post("/donasi/:id/unsave", donasiController.unsaveDonasi);
-router.get("/donasi/saved", donasiController.getSavedDonasi);
+router.put("/toggle-simpan/:id", donasiController.toggleSimpan);
+router.get("/saved/:id", donasiController.getSavedDonasi);
 
 module.exports = router;

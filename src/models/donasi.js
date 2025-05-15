@@ -35,10 +35,7 @@ const DonasiSchema = new Schema(
       type: String,
       required: true,
     },
-    disimpan: {
-      type: Array,
-      default: [],
-    },
+    disimpan: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );
