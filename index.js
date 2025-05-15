@@ -13,7 +13,7 @@ const userRoutes = require("./src/routers/user");
 const donasiRoutes = require("./src/routers/donasi");
 const detilDonasiRoutes = require("./src/routers/detilDonasi");
 const artikelRoutes = require("./src/routers/artikel");
-const apiKeyMiddleware = require("./src/middleware/apiKeyMiddleware");
+// const apiKeyMiddleware = require("./src/middleware/apiKeyMiddleware");
 
 dotenv.config();
 app.use(bodyParser.json());
